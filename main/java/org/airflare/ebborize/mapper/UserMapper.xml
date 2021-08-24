@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定一个对应的Dao/Mapper接口-->
+
+<mapper namespace="org.airflare.ebborize.mapper.UserMapper">
+    <insert id="addUser" parameterType="org.airflare.ebborize.pojo.User">
+        INSERT INTO ebborize.user(user_name, password, salt, regis_time) VALUES (#{userName},#{password},#{salt},#{regisTime})
+    </insert>
+
+    <select id="getUserByName" resultType="user">
+        SELECT * FROM ebborize.user WHERE user_name=#{name}
+    </select>
+
+    <select id="getUserByNameAndPassword" resultType="org.airflare.ebborize.pojo.User">
+        SELECT * FROM ebborize.user WHERE user_name=#{name} AND password=#{password}
+    </select>
+</mapper>
