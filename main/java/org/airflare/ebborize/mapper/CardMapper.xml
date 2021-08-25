@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定一个对应的Dao/Mapper接口-->
+
+<mapper namespace="org.airflare.ebborize.mapper.CardMapper">
+
+    <insert id="insertCard" parameterType="Card" keyProperty="cardId" useGeneratedKeys="true">
+        INSERT INTO ebborize_test.card(repository_id, card_key, card_value, last_time, next_time) VALUES (#{repositoryId},#{cardKey},#{cardValue},#{lastTime},#{nextTime})
+    </insert>
+
+    <select id="selectCardByRepoId" resultType="Card">
+        SELECT * FROM ebborize_test.card WHERE repository_id=#{repoId}
+    </select>
+
+    <update id="updateCard" parameterType="Card">
+        UPDATE ebborize_test.card SET level=#{level}, next_time=#{nextTime} WHERE card_id=#{cardId}
+    </update>
+
+    <select id="selectExpiredCard" resultType="Card">
+        SELECT * FROM ebborize_test.card WHERE repository_id=#{repoId} AND next_time&lt;=#{date}
+    </select>
+</mapper>

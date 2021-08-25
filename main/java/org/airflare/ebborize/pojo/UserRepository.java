@@ -9,10 +9,11 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Repository {
+public class UserRepository {
     private int repositoryId;
     private String repositoryName;
     private int userId;
     private Date createTime;
     private Date lastModifiedTime;
+    private int size;
 }

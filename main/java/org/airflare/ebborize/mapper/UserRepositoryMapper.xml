@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定一个对应的Dao/Mapper接口-->
+
+<mapper namespace="org.airflare.ebborize.mapper.UserRepositoryMapper">
+    <select id="getRepoByUserId" resultType="UserRepository">
+        SELECT *
+        FROM ebborize_test.repository r
+        WHERE r.user_id = #{id};
+    </select>
+
+    <select id="getRepoById" resultType="UserRepository">
+        SELECT * FROM ebborize_test.repository WHERE repository_id=#{id}
+    </select>
+
+    <insert id="insertRepo" parameterType="UserRepository" keyProperty="repositoryId" useGeneratedKeys="true">
+        INSERT INTO ebborize_test.repository(repository_name, user_id, create_time, last_modified_time)
+        VALUES (#{repositoryName},#{userId},#{createTime},#{lastModifiedTime})
+    </insert>
+    
+    <update id="updateRepo" parameterType="UserRepository">
+        UPDATE ebborize_test.repository SET size=#{size}, last_modified_time=#{lastModifiedTime} WHERE repository_id=#{repositoryId}
+    </update>
+</mapper>

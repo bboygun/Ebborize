@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mysql://39.105.113.11:3306/ebborize?characterEncoding=utf8&useSSL=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/ebborize_test?characterEncoding=utf8&useSSL=true&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: Heguanqiao1!
+    password: 299792458
 
 mybatis:
   type-aliases-package: org.airflare.ebborize.pojo

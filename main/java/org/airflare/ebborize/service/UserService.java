@@ -17,7 +17,7 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public void addUser(String name,String pwd){
+    public int addUser(String name,String pwd){
         String salt = PasswordUtil.generateSalt();
         String formedPassword = PasswordUtil.getFormedPassword(pwd,salt);
         User user = new User();
@@ -26,6 +26,7 @@ public class UserService {
         user.setSalt(salt);
         user.setRegisTime(new Date());
         userMapper.addUser(user);
+        return user.getUserId();
     }
 
     public User getUser(String username){

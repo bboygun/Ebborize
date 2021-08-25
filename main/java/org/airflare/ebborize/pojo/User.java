@@ -2,7 +2,6 @@ package org.airflare.ebborize.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
@@ -16,4 +15,5 @@ public class User {
     private String password;
     private String salt;
     private Date regisTime;
+    private UserRepository[] repositories;
 }

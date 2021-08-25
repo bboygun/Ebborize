@@ -26,4 +26,10 @@ public class UserController {
             return "用户名或密码错误！";
         }
     }
+
+    @RequestMapping("/register/{name}/{pwd}")
+    public String register(@PathVariable("name") String name,@PathVariable("pwd") String pwd){
+        int id = userService.addUser(name,pwd);
+        return "用户： "+name+"创建成功，id为 "+id;
+    }
 }
